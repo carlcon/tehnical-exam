@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { TodoList } from "./components/TodoList";
+import { data } from "./data";
+// import MyComponent from "./components/MyComponent";
+import MyComponent2 from "./components/MyComponent2";
+
+function transformData(data) {
+  const STATUSES = [1, 2];
+  const statusObj = {};
+
+  for (let i = 0; i < STATUSES.length; i++) {
+    const person = data.filter((person) => person.status === STATUSES[i]);
+
+    statusObj["status-" + parseInt(i + 1)] = person;
+  }
+
+  console.log(statusObj);
+
+  return statusObj;
+}
 
 function App() {
+  transformData(data);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>Question #1 - React - Identify the Problem and Refactor</h2>
+      <MyComponent2 headerText="HeaderText props passed to MyComponent">
+        This is the children of MyComponent
+      </MyComponent2>
+      <hr />
+
+      <h2>Question #2 - React - Solve the Problem</h2>
+      <TodoList />
+
+      <h2>
+        Technical Exam - Data Manipulation output should be now printed on the
+        console
+      </h2>
     </div>
   );
 }
